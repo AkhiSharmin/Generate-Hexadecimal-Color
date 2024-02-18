@@ -5,10 +5,16 @@ function main() {
     const root = document.getElementById('root');
     const input = document.getElementById('output');
 
+    const copyBtn = document.getElementById('copy-btn')
+
     btn.addEventListener('click', function () {
         bgHex = generateRandomHexColor();
         root.style.backgroundColor = bgHex;
         input.value = bgHex;
+    });
+
+    copyBtn.addEventListener('click', function () {
+        window.navigator.clipboard.writeText(input.value);
     })
 }
 
