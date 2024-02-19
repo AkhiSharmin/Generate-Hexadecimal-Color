@@ -11,26 +11,30 @@ function main() {
     btn.addEventListener('click', function () {
         bgHex = generateRandomHexColor();
         root.style.backgroundColor = bgHex;
-        input.value = bgHex;
+        input.value = bgHex.substring(1);
     });
 
     copyBtn.addEventListener('click', function () {
-        window.navigator.clipboard.writeText(input.value);
+        window.navigator.clipboard.writeText(`#${input.value}`);
         if (div !== null) {
             div.remove();
             div = null;
         }
         if (isValidHex(input.value)) {
-            generateToastMessage(`${input.value} copied`);
+            generateToastMessage(`#${input.value} copied`);
         } else {
             alert('Invalid color code')
         }
     });
 
     input.addEventListener('keyup', function (e) {
+
         const color = e.target.value;
-        if (color && isValidHex(color)) {
-            root.style.backgroundColor = color;
+        if (color) {
+            input.value = color.toUpperCase();
+            if (color && isValidHex(color)) {
+                root.style.backgroundColor = `#${color}`;
+            }
         }
     })
 }
@@ -66,10 +70,9 @@ function generateToastMessage(msg) {
 }
 
 function isValidHex(color) {
-    if (color.length !== 7) return false;
-    if (color[0] !== '#') return false;
+    if (color.length !== 6) return false;
 
-    color = color.substring(1)
+
     return /^[0-9A-Fa-f]{6}$/i.test(color)
 }
 

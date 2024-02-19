@@ -23,6 +23,33 @@ body {
   align-items: center;
 }
 
+.input-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  /* overflow: hidden; */
+}
+
+.input-icon {
+  position: absolute;
+  padding: 0.45rem;
+  background-color: #ddd;
+  color: #424242;
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+  margin-top: 11px;
+}
+
+.output {
+  margin-left: 1rem;
+}
+
+.output:focus {
+  outline: none;
+  border: none;
+}
+
 #change-btn {
   padding: 1rem 3rem;
   margin: 1rem 0;
