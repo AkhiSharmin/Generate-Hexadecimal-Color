@@ -1,4 +1,5 @@
 
+let div = null;
 
 function main() {
     const btn = document.getElementById('change-btn');
@@ -15,6 +16,10 @@ function main() {
 
     copyBtn.addEventListener('click', function () {
         window.navigator.clipboard.writeText(input.value);
+        if (div !== null) {
+            div.remove();
+            div = null;
+        }
         generateToastMessage(`${input.value} copied`)
     })
 }
@@ -29,7 +34,7 @@ function generateRandomHexColor() {
 }
 
 function generateToastMessage(msg) {
-    const div = document.createElement('div');
+    div = document.createElement('div');
     div.innerText = msg;
 
     div.className = 'toast-message toast-message-slide-in';
@@ -40,7 +45,8 @@ function generateToastMessage(msg) {
 
 
         div.addEventListener('animationend', function (e) {
-            div.remove()
+            div.remove();
+            div = null;
         })
     });
 
