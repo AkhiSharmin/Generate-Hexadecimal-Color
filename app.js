@@ -5,13 +5,21 @@ function main() {
     const btn = document.getElementById('change-btn');
     const root = document.getElementById('root');
     const input = document.getElementById('output');
+    const input2 = document.getElementById('output2');
 
     const copyBtn = document.getElementById('copy-btn')
 
     btn.addEventListener('click', function () {
-        bgHex = generateRandomHexColor();
-        root.style.backgroundColor = bgHex;
-        input.value = bgHex.substring(1);
+        const color = generateColorDecimal()
+
+        const hex = generateRandomHexColor(color);
+        const rgb = generateRGBAColor(color);
+
+        root.style.backgroundColor = hex;
+        input.value = hex.substring(1);
+
+        input2.value = rgb;
+
     });
 
     copyBtn.addEventListener('click', function () {
@@ -57,8 +65,8 @@ function generateColorDecimal() {
 }
 
 
-function generateRandomHexColor() {
-    const { red, green, blue } = generateColorDecimal();
+function generateRandomHexColor({ red, green, blue }) {
+    // const { red, green, blue } = generateColorDecimal();
 
 
     const getToCode = (value) => {
@@ -73,8 +81,8 @@ function generateRandomHexColor() {
 
 
 // generate rgba color code 
-function generateRGBAColor() {
-    const { red, green, blue } = generateColorDecimal();
+function generateRGBAColor({ red, green, blue }) {
+    // const { red, green, blue } = generateColorDecimal();
 
     return `rgb(${red}, ${green}, ${blue})`
 }
