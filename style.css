@@ -38,9 +38,11 @@ body {
   color: #424242;
   border-top-left-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem;
-  margin-top: 11px;
+  /* margin-top: 11px; */
 }
-
+.label-group {
+  color: #fff;
+}
 .output {
   margin-left: 1rem;
 }
